@@ -18,6 +18,7 @@
     <!--Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet"> 
     
     <!--other js libraries-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -41,6 +42,8 @@ body {
   box-shadow: 0 8px 16px -6px black;
   background: #ef592b;
   color: #ffffff;
+  line-height:100px;
+  
 }
 .footer {
   position: absolute;
@@ -79,6 +82,25 @@ body {
   bottom: 35px;
   left: 10px;
 }
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  font-size: 0.8em;
+}
+
 </style>
 
 </head>
@@ -90,7 +112,7 @@ body {
     </div>
 
 <!--Content starts-->
-  <div class="">
+  <div>
     <div class="container">
       <div class="text-center text-muted" id="clock" style="font-family: 'Inconsolata', monospace;"></div>
       <div class="text-center text-muted" id="day"></div>
@@ -100,10 +122,16 @@ body {
     </div>
     <br/>
     <div class="container text-center">
-      <span class=" text-muted" id="weather"></span> <span class="text-muted" id="weather-loc"></span>
+      <span class="text-muted" id="weather"></span> <span class="text-muted" id="weather-loc"></span>
+    </div>
+    <br/>
+    <div class="container" id="quote">
     </div>
   </div>
+  <br/><br/>
   
+  
+  <!--Social links-->
   <div class="bottom-right-1">
     <div class="fb-follow" data-href="https://www.facebook.com/suv-mitra" 
         data-layout="button_count" data-size="small" data-show-faces="true"></div>

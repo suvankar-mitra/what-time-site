@@ -2,6 +2,7 @@
 function init(){
     startTime();
     getLocation();
+    getQuote();
 }
 
 var hr;
@@ -129,3 +130,36 @@ function getWOEID(search) {
 function fahrToCelc(fahrenheit) {
     return Math.round((fahrenheit - 32) * 5 / 9); 
 } 
+
+function getQuote() {
+    var catg = ['inspire','management','sports','life','funny','love','art','students'];
+    catg = catg[getRandomInt(0,catg.length)];
+    console.log(catg);
+    var query = "http://quotes.rest/qod.json?category="+catg;
+    $.ajax({
+        type: 'GET',
+        url: query,
+        dataType: 'json',
+        success: function(data) {
+            var qt = data.contents.quotes[0].quote;
+            var auth = data.contents.quotes[0].author;
+            if(!qt) {
+                qt ="Life is a song, Love is the music";
+                auth = "Anonymous";
+            }
+            document.getElementById('quote').innerHTML = "<blockquote><span style=\"font-family: 'Dancing Script', cursive; font-size:2em;\">"+qt+"</span>"+"<p>- "+auth+"</p></blockquote>";
+        },
+        error: function(data){
+                var qt ="Life is a song, Love is the music";
+                var auth = "Anonymous";
+            document.getElementById('quote').innerHTML = "<blockquote><span style=\"font-family: 'Dancing Script', cursive; font-size:2em;\">"+qt+"</span>"+"<p>- "+auth+"</p></blockquote>";
+        }
+    });
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+
