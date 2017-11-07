@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>What time</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Google meta-->
+    <meta name="google-site-verification" content="RuWUqxhJDqmg9-5TwrOYQ3r-mD50yyofV62ShPKP77k" />
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <!--Awesome fonts-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!--Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    
+    <!--other js libraries-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="./css/weather-icons.css">
+    
+    <!--local script-->
+    <script src="./scripts/main.js"></script>
+
+<style>
+body {
+  font-family: 'Saira Semi Condensed', sans-serif;
+  font-size: 22px;
+  background-image: url("res/topography.png");
+  background-repeat: repeat;
+}
+.jumbotron {
+  posistion:relative;
+  z-index: 2;
+  box-shadow: 0 8px 16px -6px black;
+  background: #ef592b;
+  color: #ffffff;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  line-height: 30px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+  font-size: 10px;
+}
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+.bottom-right-1 {
+  position: fixed;
+  bottom: 35px;
+  right: 10px;
+}
+.bottom-right-2 {
+  position: fixed;
+  bottom: 58px;
+  right: 10px;
+}
+.bottom-right-3 {
+  position: fixed;
+  bottom: 78px;
+  right: 10px;
+}
+.bottom-left-1 {
+  position: fixed;
+  bottom: 35px;
+  left: 10px;
+}
+</style>
+
+</head>
+
+<body onload="init()">
+
+    <div class="jumbotron text-center">
+      <h1>What time is it?</h1>
+    </div>
+
+<!--Content starts-->
+  <div class="">
+    <div class="container">
+      <div class="text-center text-muted" id="clock" style="font-family: 'Inconsolata', monospace;"></div>
+      <div class="text-center text-muted" id="day"></div>
+    </div>
+    <div class="container">
+      <div class="text-center text-muted" id="zone"></div>
+    </div>
+    
+    <div class="container text-center">
+      <span class=" text-muted" id="weather"></span> <span class="text-muted" id="weather-loc"></span>
+    </div>
+  </div>
+  
+  <div class="bottom-right-1">
+    <div class="fb-follow" data-href="https://www.facebook.com/suv-mitra" 
+        data-layout="button_count" data-size="small" data-show-faces="true"></div>
+  </div>
+  <div class="bottom-right-2">
+    <span>
+        <a href="https://suvankarmitra.blogspot.in/">
+            <img src="https://www.blogger.com/img/blogger-logotype-color-black-2x.png" width="82" height="22">
+        </a>
+    </span>
+  </div>
+  <div class="bottom-right-3">
+    <span>
+        <a href="https://github.com/" aria-label="Homepage">
+        <svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32">
+            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+            </path>
+        </svg>
+        </a>
+    </span>
+  </div>
+  <div class="bottom-left-1" style="font-size:12px;">
+      <small  class="text-muted">Location is based on your IP: </small><small class="text-muted" id="ip"></small>
+  </div>
+
+<!--Content ends-->
+
+    <footer class="footer"> 
+      <div class="container text-center">
+        <span class="text-muted" id="footer"></span>
+      </div>
+    </footer>
+
+<!--fb-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=1500767966635082';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>
+
