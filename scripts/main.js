@@ -25,7 +25,7 @@ function startTime() {
     day = week[day];
     mo = months[mo-1];
     document.getElementById('clock').innerHTML =
-    "<h2>"+day +", "+ d + "-" + mo + "-" + y + "&nbsp;&nbsp;" + h + ":" + m + ":" + s + "</h2> ";
+    "<h2>"+day +", "+ d + "-" + mo + "-" + y + ", " + h + ":" + m + ":" + s + "</h2> ";
     var t = setTimeout(startTime, 500);
     
     var offset = new Date().toString().match(/([A-Z]+[\+-][0-9]+.*)/)[1];
