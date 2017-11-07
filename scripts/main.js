@@ -144,13 +144,13 @@ function getQuote() {
             var qt = data.contents.quotes[0].quote;
             var auth = data.contents.quotes[0].author;
             if(!qt) {
-                qt ="Life is a song, Love is the music";
+                qt ="Life is a song, Love is the music.";
                 auth = "Anonymous";
             }
             document.getElementById('quote').innerHTML = "<blockquote><span style=\"font-family: 'Dancing Script', cursive; font-size:2em;\">"+qt+"</span>"+"<p>- "+auth+"</p></blockquote>";
         },
         error: function(data){
-                var qt ="Life is a song, Love is the music";
+                var qt ="Life is a song, Love is the music.";
                 var auth = "Anonymous";
             document.getElementById('quote').innerHTML = "<blockquote><span style=\"font-family: 'Dancing Script', cursive; font-size:2em;\">"+qt+"</span>"+"<p>- "+auth+"</p></blockquote>";
         }
